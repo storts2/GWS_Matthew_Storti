@@ -1,8 +1,5 @@
 ﻿@page
 @model IndexModel
-@{
-    ViewData["Title"] = "Home page";
-}
 
 <div class="d-flex flex-column align-items-center justify-content-center">
     <h1 class="display-4">Assignment 1</h1>
@@ -12,3 +9,29 @@
     <p>Syed Tanbeer</p>
     <p>Grocery Management System</p>
 </div>
+
+<table>
+    <theah>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Date</th>
+            <th>Quantity</th>
+            <th>Price</th>
+        </tr>
+    </theah>
+    <tbody>
+        @foreach (var i in Model.items)
+        {
+            <tr>
+                <td>@i.Id</td>
+                <td>@i.Name</td>
+                <td>@i.Category</td>
+                <td>@i.Date</td>
+                <td>@i.Quantity</td>
+                <td>@i.Price</td>
+            </tr>
+        }
+    </tbody>
+</table>

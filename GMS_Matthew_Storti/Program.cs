@@ -1,3 +1,6 @@
+using GMS_Matthew_Storti.DataAccessLayer;
+using Microsoft.EntityFrameworkCore;
+
 namespace GMS_Matthew_Storti;
 
 public class Program
@@ -8,6 +11,12 @@ public class Program
 
         // Add services to the container.
         builder.Services.AddRazorPages();
+
+        builder.Services.AddDbContext<GroceryDBContext>(
+            options=>options.UseSqlite(builder
+            .Configuration
+            .GetConnectionString("GroceryConnection"))
+            );
 
         var app = builder.Build();
 
