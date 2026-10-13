@@ -1,4 +1,5 @@
 using GMS_Matthew_Storti.DataAccessLayer;
+using GMS_Matthew_Storti.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace GMS_Matthew_Storti;
@@ -17,6 +18,8 @@ public class Program
             .Configuration
             .GetConnectionString("GroceryConnection"))
             );
+
+        builder.Services.AddScoped<IGroceryItemService, GroceryItemService>();
 
         var app = builder.Build();
 
