@@ -1,0 +1,37 @@
+﻿@page
+@model GMS_Matthew_Storti.Pages.CategoryModel
+
+<h1>Search By Category</h1>
+
+<form method="post" asp-page-handler="Category">    
+    <div>
+        <label asp-for="CurrentCategory">Category</label>
+        <input asp-for="CurrentCategory" placeholder="Enter Category Here"/>
+    </div>
+    <button type="submit">Set Category</button>
+</form>
+
+<h2>Current Category: @Model.CurrentCategory</h2>
+@if (Model.Items != null && Model.Items.Count > 0) {
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var i in Model.Items)
+            {
+                <tr>
+                    <td>@i.Name</td>
+                    <td>@i.Price</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>There are no items in that category...</p>
+}
