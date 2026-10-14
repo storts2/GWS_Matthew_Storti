@@ -31,14 +31,14 @@ public class GroceryItemService : IGroceryItemService
 
     public GroceryItem UpdateItem(GroceryItem item)
     {
-        _context.Items.Update(item)
+        _context.Items.Update(item);
         _context.SaveChanges();
         return item;
     }
 
     public GroceryItem DeleteItemById(int id)
     {
-        GroceryItem item = GetItemById(id)
+        GroceryItem item = GetItemById(id);
 
         _context.Remove(item);
         _context.SaveChanges();
