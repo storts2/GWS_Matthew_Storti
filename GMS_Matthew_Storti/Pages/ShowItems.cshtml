@@ -1,83 +1,86 @@
 ﻿@page
 @model GMS_Matthew_Storti.Pages.ShowItemsModel
 
-<div>
-    <h1>All Items</h1>
+<div class="d-flex flex-row gap-4 bg-primary text-white p-4 rounded-4 shadow">
+    <div class="d-flex flex-column justify-content-center align-items-center">
+        <h1>All Items</h1>
 
-    <table>
-        <theah>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Category</th>
-                <th>Date</th>
-                <th>Quantity</th>
-                <th>Price</th>
-                <th>Edit Item</th>
-            </tr>
-        </theah>
-        <tbody>
-            @foreach (var i in Model.Items)
-            {
+        <table class="table table-secondary table-hover align-middle p-2 rounded-3 overflow-hidden">
+            <theah>
                 <tr>
-                    <td>@i.Id</td>
-                    <td>@i.Name</td>
-                    <td>@i.Category</td>
-                    <td>@i.Date</td>
-                    <td>@i.Quantity</td>
-                    <td>@i.Price</td>
-                    <td>
-                        <form method="post" asp-page-handler="Id">    
-                            <div>
-                                <input asp-for="CurrentId" type="hidden" value="@i.Id"/>
-                            </div>
-                            <button type="submit">Edit</button>
-                        </form>
-                    </td>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Date</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Edit Item</th>
                 </tr>
-            }
-        </tbody>
-    </table>
-</div>
-<div>
-    @if (Model.IsSelected)
-    {
-        <form method="post" asp-page-handler="Update">
-            <div>
-                <input asp-for="CurrentItem.Id" type="hidden" />
-            </div>
-            <div>
-                <label asp-for="CurrentItem.Name">Name</label>
-                <input asp-for="CurrentItem.Name" />
-            </div>
-            <div>
-                <label asp-for="CurrentItem.Category">Category</label>
-                <input asp-for="CurrentItem.Category" />
-            </div>
-            <div>
-                <label asp-for="CurrentItem.Date">Date</label>
-                <input asp-for="CurrentItem.Date" />
-            </div>
-            <div>
-                <label asp-for="CurrentItem.Quantity">Quantity</label>
-                <input asp-for="CurrentItem.Quantity" />
-            </div>
-            <div>
-                <label asp-for="CurrentItem.Price">Price</label>
-                <input asp-for="CurrentItem.Price" />
-            </div>
-            <button type="submit">Update Item</button>
-        </form>
-        <form method="post" asp-page-handler="Delete">
-            <div>
-                <input asp-for="CurrentId" type="hidden" value="@Model.CurrentId" />
-            </div>
-            <button type="submit">Delete</button>
-        </form>
-    }
-    else
-    {
-        <p>No Item Selected To Edit</p>
-    }
+            </theah>
+            <tbody>
+                @foreach (var i in Model.Items)
+                {
+                    <tr>
+                        <td>@i.Id</td>
+                        <td>@i.Name</td>
+                        <td>@i.Category</td>
+                        <td>@i.Date</td>
+                        <td>@i.Quantity</td>
+                        <td>@i.Price</td>
+                        <td>
+                            <form method="post" asp-page-handler="Id">    
+                                <div>
+                                    <input asp-for="CurrentId" type="hidden" value="@i.Id"/>
+                                </div>
+                                <button type="submit" class="bg-warning border-0 rounded-2">Edit</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="d-flex flex-column justify-content-center align-items-center gap-3">
+        <h1>Update/Delete Item</h1>
+        @if (Model.IsSelected)
+        {
+            <form method="post" asp-page-handler="Update" class="d-flex flex-column gap-1 w-100">
+                <div class="d-flex flex-column">
+                    <input asp-for="CurrentItem.Id" type="hidden" />
+                </div>
+                <div class="d-flex flex-column">
+                    <label asp-for="CurrentItem.Name">Name</label>
+                    <input asp-for="CurrentItem.Name" class="p-1 rounded-2 border-0" />
+                </div>
+                <div class="d-flex flex-column">
+                    <label asp-for="CurrentItem.Category">Category</label>
+                    <input asp-for="CurrentItem.Category" class="p-1 rounded-2 border-0" />
+                </div>
+                <div class="d-flex flex-column">
+                    <label asp-for="CurrentItem.Date">Date</label>
+                    <input asp-for="CurrentItem.Date" class="p-1 rounded-2 border-0" />
+                </div>
+                <div class="d-flex flex-column">
+                    <label asp-for="CurrentItem.Quantity">Quantity</label>
+                    <input asp-for="CurrentItem.Quantity" class="p-1 rounded-2 border-0" />
+                </div>
+                <div class="d-flex flex-column">
+                    <label asp-for="CurrentItem.Price">Price</label>
+                    <input asp-for="CurrentItem.Price" class="p-1 rounded-2 border-0" />
+                </div>
+                <button type="submit" class="bg-success border-0 mt-2 text-white p-2 rounded-4">Update Item</button>
+            </form>
+            <form method="post" asp-page-handler="Delete" class="d-flex flex-column w-100">
+                <div>
+                    <input asp-for="CurrentId" type="hidden" value="@Model.CurrentId" />
+                </div>
+                <button type="submit" class="bg-danger border-0 mt-2 text-white p-2 rounded-4">Delete</button>
+            </form>
+        }
+        else
+        {
+            <p>No Item Selected To Edit</p>
+        }
+    </div>
 </div>
 

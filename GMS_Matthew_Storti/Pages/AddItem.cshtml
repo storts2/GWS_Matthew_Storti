@@ -1,31 +1,33 @@
 ﻿@page
 @model GMS_Matthew_Storti.Pages.AddItemModel
 
-<h1>Add A Grocery Items</h1>
+<div class="d-flex flex-column gap-3 bg-primary text-white p-4 rounded-4 shadow">
+    <h1>Add A Grocery Items</h1>
 
-<form method="post">
-    <div>
-        <label asp-for="Item.Name">Name</label>
-        <input asp-for="Item.Name"/>
-    </div>
-    <div>
-        <label asp-for="Item.Category">Category</label>
-        <input asp-for="Item.Category" />
-    </div>
-    <div>
-        <label asp-for="Item.Date">Date</label>
-        <input asp-for="Item.Date" />
-    </div>
-    <div>
-        <label asp-for="Item.Quantity">Quantity</label>
-        <input asp-for="Item.Quantity" />
-    </div>
-    <div>
-        <label asp-for="Item.Price">Price</label>
-        <input asp-for="Item.Price" />
-    </div>
-    <button type="submit">Add Item</button>
-</form>
+    <form method="post" class="d-flex flex-column gap-1">
+        <div class="d-flex flex-column">
+            <label asp-for="Item.Name">Name</label>
+            <input asp-for="Item.Name" class="p-1 rounded-2 border-0" />
+        </div>
+        <div class="d-flex flex-column">
+            <label asp-for="Item.Category">Category</label>
+            <input asp-for="Item.Category" class="p-1 rounded-2 border-0" />
+        </div>
+        <div class="d-flex flex-column">
+            <label asp-for="Item.Date">Date</label>
+            <input asp-for="Item.Date" class="p-1 rounded-2 border-0" />
+        </div>
+        <div class="d-flex flex-column">
+            <label asp-for="Item.Quantity">Quantity</label>
+            <input asp-for="Item.Quantity" class="p-1 rounded-2 border-0" />
+        </div>
+        <div class="d-flex flex-column">
+            <label asp-for="Item.Price">Price</label>
+            <input asp-for="Item.Price" class="p-1 rounded-2 border-0" />
+        </div>
+        <button type="submit" class="bg-success border-0 mt-3 text-white p-2 rounded-4">Add Item</button>
+    </form>
 
-<p>@Model.Message</p>
+    <p>@Model.Message</p>
+</div>
 

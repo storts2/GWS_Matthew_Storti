@@ -9,30 +9,30 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/GMS_Matthew_Storti.styles.css" asp-append-version="true" />
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-primary border-bottom box-shadow shadow">
             <ul class="navbar-nav flex-grow-1 justify-content-center justify-content-center">
                 <li class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                    <a class="nav-link text-white" asp-area="" asp-page="/Index">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-page="/AddItem">Add Item</a>
+                    <a class="nav-link text-white" asp-area="" asp-page="/AddItem">Add Item</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-page="/ShowItems">All Items</a>
+                    <a class="nav-link text-white" asp-area="" asp-page="/ShowItems">All Items</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-page="/Category">View Categories</a>
+                    <a class="nav-link text-white" asp-area="" asp-page="/Category">View Categories</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-page="/Price">Search By Price</a>
+                    <a class="nav-link text-white" asp-area="" asp-page="/Price">Search By Price</a>
                 </li>
             </ul>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+    <div class="d-flex flex-grow-1 justify-content-center align-items-center border">
+        <main role="main" class="">
             @RenderBody()
         </main>
     </div>
