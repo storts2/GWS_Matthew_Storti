@@ -1,0 +1,45 @@
+﻿@page
+@model GMS_Matthew_Storti.Pages.PriceModel
+
+<h1>Search By Price</h1>
+
+<form method="post" asp-page-handler="Price">    
+    <div>
+        <label asp-for="CurrentPrice">Price</label>
+        <input asp-for="CurrentPrice" placeholder="Enter Price Here"/>
+    </div>
+    <button type="submit">Set Price</button>
+</form>
+
+<h2>Current Price: @Model.CurrentPrice</h2>
+@if (Model.Items != null && Model.Items.Count > 0) {
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Category</th>
+                <th>Date</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var i in Model.Items)
+            {
+                <tr>
+                    <td>@i.Name</td>
+                    <td>@i.Price</td>
+                    <td>@i.Category</td>
+                    <td>@i.Date</td>
+                    <td>@i.Quantity</td>
+                    <td>@i.Price</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>There are no items greater than the price...</p>
+}
