@@ -1,3 +1,83 @@
 ﻿@page
 @model GMS_Matthew_Storti.Pages.ShowItemsModel
 
+<div>
+    <h1>All Items</h1>
+
+    <table>
+        <theah>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Date</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Edit Item</th>
+            </tr>
+        </theah>
+        <tbody>
+            @foreach (var i in Model.Items)
+            {
+                <tr>
+                    <td>@i.Id</td>
+                    <td>@i.Name</td>
+                    <td>@i.Category</td>
+                    <td>@i.Date</td>
+                    <td>@i.Quantity</td>
+                    <td>@i.Price</td>
+                    <td>
+                        <form method="post" asp-page-handler="Id">    
+                            <div>
+                                <input asp-for="CurrentId" type="hidden" value="@i.Id"/>
+                            </div>
+                            <button type="submit">Edit</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div>
+    @if (Model.IsSelected)
+    {
+        <form method="post" asp-page-handler="Update">
+            <div>
+                <input asp-for="CurrentItem.Id" type="hidden" />
+            </div>
+            <div>
+                <label asp-for="CurrentItem.Name">Name</label>
+                <input asp-for="CurrentItem.Name" />
+            </div>
+            <div>
+                <label asp-for="CurrentItem.Category">Category</label>
+                <input asp-for="CurrentItem.Category" />
+            </div>
+            <div>
+                <label asp-for="CurrentItem.Date">Date</label>
+                <input asp-for="CurrentItem.Date" />
+            </div>
+            <div>
+                <label asp-for="CurrentItem.Quantity">Quantity</label>
+                <input asp-for="CurrentItem.Quantity" />
+            </div>
+            <div>
+                <label asp-for="CurrentItem.Price">Price</label>
+                <input asp-for="CurrentItem.Price" />
+            </div>
+            <button type="submit">Update Item</button>
+        </form>
+        <form method="post" asp-page-handler="Delete">
+            <div>
+                <input asp-for="CurrentId" type="hidden" value="@Model.CurrentId" />
+            </div>
+            <button type="submit">Delete</button>
+        </form>
+    }
+    else
+    {
+        <p>No Item Selected To Edit</p>
+    }
+</div>
+
