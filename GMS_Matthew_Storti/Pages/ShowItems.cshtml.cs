@@ -15,6 +15,7 @@ namespace GMS_Matthew_Storti.Pages
             _service = service;
             Items = new List<GroceryItem>();
             IsSelected = false;
+            Message = "Nothing has been updated yet";
         }
 
         [BindProperty]
@@ -24,6 +25,8 @@ namespace GMS_Matthew_Storti.Pages
         public GroceryItem CurrentItem { get; set; }
 
         public bool IsSelected { get; set; }
+
+        public string Message { get; set; }
 
         public List<GroceryItem> Items { get; set; }
 
@@ -43,7 +46,15 @@ namespace GMS_Matthew_Storti.Pages
 
         public void OnPostUpdate()
         {
-            _service.UpdateItem(CurrentItem);
+            if(!ModelState.IsValid)
+            {
+                Message = "Nothing updated, incorrect input";
+            }
+            else
+            {
+                _service.UpdateItem(CurrentItem);
+                Message = "Item updated";
+            }
 
             Items = _service.GetAllItems();
         }
@@ -53,6 +64,8 @@ namespace GMS_Matthew_Storti.Pages
             _service.DeleteItemById(CurrentId);
 
             Items = _service.GetAllItems();
+
+            IsSelected = false;
         }
     }
 }

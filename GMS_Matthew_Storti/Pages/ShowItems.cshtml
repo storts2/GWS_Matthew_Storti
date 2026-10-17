@@ -57,7 +57,7 @@
                     <input asp-for="CurrentItem.Category" class="p-1 rounded-2 border-0" />
                 </div>
                 <div class="d-flex flex-column">
-                    <label asp-for="CurrentItem.Date">Date</label>
+                    <label asp-for="CurrentItem.Date">Date (YYYY-MM-DD)</label>
                     <input asp-for="CurrentItem.Date" class="p-1 rounded-2 border-0" />
                 </div>
                 <div class="d-flex flex-column">
@@ -80,6 +80,7 @@
         else
         {
             <p>No Item Selected To Edit</p>
+            <p>Status: @Model.Message</p>
         }
     </div>
 </div>
